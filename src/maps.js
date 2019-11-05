@@ -113,36 +113,26 @@ const maps = [{
     },
   },
   {
-    name: "Wikimapia",
-    category: MAIN_CATEGORY,
-    domain: "http://wikimapia.org/",
-    getUrl(lat, lon, zoom) {
-      return 'http://wikimapia.org/#lang=en&lat=' + lat + '&lon=' + lon + '&z=' + zoom+',&m=w';
-    },
-    getLatLonZoom(url) {
-      let match;
-      if (match = url.match(/wego\.here\.com.*map=(-?\d[0-9.]*),(-?\d[0-9.]*),(\d{1,2}),normal&x=ep/)) {
-        const [, lat, lon, zoom] = match;
-        return [lat, lon, zoom];
-      } else if (match = url.match(/wego\.here\.com.*map=(-?\d[0-9.]*),(-?\d[0-9.]*),(\d{1,2}),normal/)){
-        let [,lat,lon,zoom] = match;
-        return [lat,lon,zoom];
-      } else if (match = url.match(/wego\.here\.com.*map=(-?\d[0-9.]*),(-?\d[0-9.]*),(\d{1,2}),satellite/)){
-        let [,lat,lon,zoom] = match;
-        return [lat,lon,zoom];
-      } else if (match = url.match(/wego\.here\.com.*map=(-?\d[0-9.]*),(-?\d[0-9.]*),(\d{1,2}),terrain/)){
-        let [,lat,lon,zoom] = match;
-        return [lat,lon,zoom];
-      } else if (match = url.match(/wego\.here\.com.*map=(-?\d[0-9.]*),(-?\d[0-9.]*),(\d{1,2}),public_transport/)){
-        let [,lat,lon,zoom] = match;
-        return [lat,lon,zoom];
-      } else if (match = url.match(/wego\.here\.com.*map=(-?\d[0-9.]*),(-?\d[0-9.]*),(\d{1,2}),traffic/)){
-        let [,lat,lon,zoom] = match;
-        return [lat,lon,zoom];
-      }
-    },
-  },
-  {
+    name: "Wikimapia",
+    category: MAIN_CATEGORY,
+    domain: "http://wikimapia.org/",
+    getUrl(lat, lon, zoom) {
+      return 'http://wikimapia.org/#lang=en&lat=' + lat + '&lon=' + lon + '&z=' + zoom+'&m=w';
+    },
+    getLatLonZoom(url) {
+      let match;
+      if (match = url.match(/wikimapia\.org.*lang=en&lat=(-?\d[0-9.]*)&lon=(-?\d[0-9.]*)&z=(\d{1,2})&m=w/)) {
+        const [, lat, lon, zoom] = match;
+        return [lat, lon, zoom];
+      } else if (match = url.match(/wikimapia\.org.*lang=ms&lat=(-?\d[0-9.]*)&lon=(-?\d[0-9.]*)&z=(\d{1,2})&m=w/)){
+        let [,lat,lon,zoom] = match;
+        return [lat,lon,zoom];
+      } else if (match = url.match(/wikimapia\.org.*lang=jv&lat=(-?\d[0-9.]*)&lon=(-?\d[0-9.]*)&z=(\d{1,2})&m=w/)){
+        let [,lat,lon,zoom] = match;
+        return [lat,lon,zoom];
+      }
+    },
+  },
     name: "Mapillary",
     category: MAIN_CATEGORY,
     domain: "www.mapillary.com",
